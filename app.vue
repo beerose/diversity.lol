@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button @click="sort = sort === 'DESC' ? 'ASC' : 'DESC'">
+    <NuxtLink :to="{ query: { sort: sort === 'DESC' ? 'ASC' : 'DESC' } }">
       Sort by date
-    </button>
+    </NuxtLink>
     <article v-for="conference of filtered">
       <h2>{{ conference.name }}</h2>
       <p>{{ conference.description }}</p>
@@ -16,17 +16,22 @@
 </template>
 
 <script setup lang="ts">
+  const route = useRoute()
   const { data } = await useFetch('/api/conferences')
-  const filters = reactive({
-    tags: [],
-    locations: [],
+  const filters = computed(() => ({
+    tags: route.query.tags ? (route.query.tags as string).split(',') : [],
+    locations: route.query.locations
+      ? (route.query.locations as string).split(',')
+      : [],
     diversity: {
-      min: 0,
-      max: 100,
+      min: route.query.min ? +route.query.min : 0,
+      max: route.query.max ? +route.query.max : 100,
     },
-  })
+  }))
 
-  const sort = ref<'DESC' | 'ASC'>('DESC')
+  const sort = computed<'DESC' | 'ASC'>(
+    () => (route.query.sort as 'DESC' | 'ASC') || 'DESC'
+  )
 
   const filtered = computed(() =>
     data.value
@@ -37,12 +42,12 @@
             conference.speakers.total) *
           100
         return (
-          filters.tags.every((tag) => conference.tags.includes(tag)) &&
-          filters.locations.every((location) =>
+          filters.value.tags.every((tag) => conference.tags.includes(tag)) &&
+          filters.value.locations.every((location) =>
             conference.location.includes(location)
           ) &&
-          diversity >= filters.diversity.min &&
-          diversity <= filters.diversity.max
+          diversity >= filters.value.diversity.min &&
+          diversity <= filters.value.diversity.max
         )
       })
       .sort((a, b) => {
