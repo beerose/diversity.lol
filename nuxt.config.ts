@@ -6,8 +6,15 @@ export default defineNuxtConfig({
     devStorage: {
       conferences: {
         driver: 'fs',
-        base: 'data/conferences'
-      }
+        base: 'data/conferences',
+      },
     },
-  }
+  },
+  css: ['~/assets/css/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 })
