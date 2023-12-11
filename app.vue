@@ -14,10 +14,12 @@
       <p>{{ conference.speakers }}</p>
     </article>
   </div>
+  <Footer />
 </template>
 
 <script setup lang="ts">
   import Hero from '~/components/Hero.vue'
+  import Footer from '~/components/Footer.vue'
   const route = useRoute()
   const { data } = await useFetch('/api/conferences')
   const filters = computed(() => ({
