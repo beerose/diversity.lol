@@ -31,18 +31,18 @@
       </nav>
     </header>
 
-    <div class="relative isolate px-6 pt-14 lg:px-8">
-      <div class="mx-auto max-w-2xl py-6 sm:py-12 lg:py-16">
+    <div class="relative isolate px-6 pt-10 lg:px-8">
+      <div class="mx-auto max-w-2xl py-6 sm:py-8 lg:py-12">
         <div class="text-center flex flex-col items-center">
           <h1
-            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
           >
-            Diveristy in Tech
+            🫠 diversity.lol 🫠
           </h1>
-          <p class="mt-6 text-lg leading-8 text-stone-600">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua.
+          <p class="mt-6 text-base leading-6 text-stone-600">
+            A list of conferences and events with statistics on diversity and
+            inclusion.<br />
+            This is a community project. Please contribute!
           </p>
           <div class="pt-6 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
             <a
