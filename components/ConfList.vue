@@ -91,7 +91,7 @@
                             :value="option.value"
                             type="checkbox"
                             :checked="
-                              filters[section.id].includes(option.value)
+                              filters[section.id as FilterKeys]?.includes(option.value)
                             "
                             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                           />
@@ -185,7 +185,7 @@
               <div class="flow-root">
                 <PopoverGroup class="-mx-4 flex items-center">
                   <Popover
-                    v-for="(section, sectionIdx) in filterOptions"
+                    v-for="section in filterOptions"
                     :key="section.name"
                     class="relative inline-block px-4 text-left"
                   >
@@ -194,9 +194,9 @@
                     >
                       <span>{{ section.name }}</span>
                       <span
-                        v-if="filters[section.id]?.length"
+                        v-if="filters[section.id as FilterKeys]?.length"
                         class="ml-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700"
-                        >1</span
+                        >{{ filters[section.id as FilterKeys]?.length }}</span
                       >
                       <ChevronDownIcon
                         class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -227,9 +227,31 @@
                               :value="option.value"
                               type="checkbox"
                               :checked="
-                                filters[section.id].includes(option.value)
+                                filters[section.id as FilterKeys]?.includes(option.value)
                               "
                               class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                              :onChange="
+                                (e) => {
+                                  const value = e.target.value
+                                  const checked = e.target.checked
+                                  const currentQuery = route.query[section.id]
+                                  const current = Array.isArray(currentQuery)
+                                    ? currentQuery
+                                    : currentQuery
+                                    ? [currentQuery]
+                                    : []
+                                  const next = checked
+                                    ? [...current, value]
+                                    : current.filter((v) => v !== value)
+
+                                  router.replace({
+                                    query: {
+                                      ...route.query,
+                                      [section.id]: next,
+                                    },
+                                  })
+                                }
+                              "
                             />
                             <label
                               :for="`filter-${section.id}-${optionIdx}`"
@@ -346,7 +368,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ArrowDownIcon, ArrowUpRightIcon } from '@heroicons/vue/20/solid'
   import { ref } from 'vue'
   import {
     Dialog,
@@ -371,16 +392,21 @@
   const open = ref(false)
 
   const route = useRoute()
+  const router = useRouter()
   const { data } = await useFetch('/api/conferences')
-  const filters = computed(() => ({
+  const filters = computed<Filters>(() => ({
     tags: route.query.tags ? (route.query.tags as string).split(',') : [],
-    locations: route.query.locations
-      ? (route.query.locations as string).split(',')
+    locations: Array.isArray(route.query.locations)
+      ? (route.query.locations as string[])
+      : route.query.locations
+      ? [route.query.locations as string]
       : [],
-    treshold: Number(route.query.treshold) || 0,
+    treshold: [route.query.treshold as string].filter(Boolean),
   }))
 
   type Sort = 'newest' | 'oldest' | 'diverse'
+  type FilterKeys = 'tags' | 'locations' | 'treshold'
+  type Filters = Record<FilterKeys, string[]>
 
   const sort = computed<Sort>(() => (route.query.sort as Sort) || 'newest')
 
@@ -395,10 +421,13 @@
 
         return (
           filters.value.tags.every((tag) => conference.tags.includes(tag)) &&
-          filters.value.locations.every((location) =>
-            conference.location.includes(location)
+          filters.value.locations.some((location) =>
+            location === 'online'
+              ? conference.location === 'online'
+              : conference.location === 'inperson' ||
+                conference.location !== 'online'
           ) &&
-          diversity >= filters.value.treshold
+          diversity >= (Number(filters.value.treshold) || 0)
         )
       })
       .sort((a, b) => {
@@ -423,20 +452,15 @@
       })
   )
   const tags = computed(() => [
-    ...new Set(
-      data.value
-        ?.map((conference) => conference.tags)
-        .flat()
-        .filter((tag) => !filters.value.tags.includes(tag))
-    ),
+    ...new Set(data.value?.map((conference) => conference.tags).flat()),
   ])
 
-  const sortOptions = [
+  const sortOptions: { name: string; href: Sort }[] = [
     { name: 'Newest', href: 'newest' },
     { name: 'Oldest', href: 'oldest' },
     { name: 'Most Diverse', href: 'diverse' },
   ]
-  const filterOptions = [
+  const filterOptions = computed(() => [
     {
       id: 'tags',
       name: 'Tags',
@@ -446,11 +470,12 @@
       })),
     },
     {
-      id: 'location',
+      id: 'locations',
       name: 'Location',
       options: [
         { value: 'online', label: 'Online' },
         { value: 'inperson', label: 'In Person' },
+        { value: 'hybrid', label: 'Hybrid' },
       ],
     },
     {
@@ -465,5 +490,5 @@
         { value: '3xl', label: '> 80%' },
       ],
     },
-  ]
+  ])
 </script>
