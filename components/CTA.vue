@@ -8,11 +8,12 @@
       </h2>
       <div class="mt-10 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
         <a
-          href="#"
+          href="https://github.com/beerose/diversity.lol/new/main/data/conferences"
           target="_blank"
           class="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >Get started</a
         >
+          Add a conference
+        </a>
         <a
           href="/about"
           class="text-sm font-semibold leading-6 text-gray-900"

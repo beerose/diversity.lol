@@ -1,8 +1,8 @@
 <template>
   <div>
-    <header class="absolute inset-x-0 top-0 z-50">
+    <header class="inset-x-0 top-0 z-50">
       <nav
-        class="flex items-center justify-between p-6 lg:px-8 text-xs text-gray-500"
+        class="flex items-center justify-between py-6 text-xs text-gray-500"
         aria-label="Global"
       >
         <NuxtLink
@@ -33,7 +33,7 @@
 
     <div class="relative isolate px-6 pt-14 lg:px-8">
       <div class="mx-auto max-w-2xl py-6 sm:py-12 lg:py-16">
-        <div class="text-center">
+        <div class="text-center flex flex-col items-center">
           <h1
             class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
           >
@@ -44,6 +44,20 @@
             lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
             fugiat aliqua.
           </p>
+          <div class="pt-6 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
+            <a
+              href="https://github.com/beerose/diversity.lol/new/main/data/conferences"
+              target="_blank"
+              class="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Add a conference
+            </a>
+            <a
+              href="/about"
+              class="text-sm font-semibold leading-6 text-gray-900"
+              >Learn more <span aria-hidden="true">→</span></a
+            >
+          </div>
         </div>
       </div>
     </div>
