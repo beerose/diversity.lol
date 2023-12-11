@@ -1,25 +1,30 @@
 <template>
-  <Hero />
-  <div>
-    <NuxtLink :to="{ query: { sort: sort === 'DESC' ? 'ASC' : 'DESC' } }">
-      Sort by date
-    </NuxtLink>
-    <article v-for="conference of filtered">
-      <h2>{{ conference.name }}</h2>
-      <p>{{ conference.description }}</p>
-      <p>{{ conference.location }}</p>
-      <p>{{ conference.startDate }}</p>
-      <p>{{ conference.url }}</p>
-      <p>{{ conference.tags }}</p>
-      <p>{{ conference.speakers }}</p>
-    </article>
-  </div>
-  <Footer />
+  <NuxtLayout>
+    <Hero />
+    <div>
+      <NuxtLink :to="{ query: { sort: sort === 'DESC' ? 'ASC' : 'DESC' } }">
+        Sort by date
+      </NuxtLink>
+      <article v-for="conference of filtered">
+        <h2>{{ conference.name }}</h2>
+        <p>{{ conference.description }}</p>
+        <p>{{ conference.location }}</p>
+        <p>{{ conference.startDate }}</p>
+        <p>{{ conference.url }}</p>
+        <p>{{ conference.tags }}</p>
+        <p>{{ conference.speakers }}</p>
+      </article>
+    </div>
+    <CTA />
+    <Footer />
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
   import Hero from '~/components/Hero.vue'
   import Footer from '~/components/Footer.vue'
+  import CTA from '~/components/CTA.vue'
+
   const route = useRoute()
   const { data } = await useFetch('/api/conferences')
   const filters = computed(() => ({
