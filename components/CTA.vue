@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white w-full">
+  <div class="bg-white w-full mt-10">
     <div
       class="rounded-xl bg-primary mx-auto max-w-7xl px-6 py-8 sm:py-16 lg:flex lg:items-center lg:justify-between lg:px-8"
     >
