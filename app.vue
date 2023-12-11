@@ -1,4 +1,5 @@
 <template>
+  <Hero />
   <div>
     <NuxtLink :to="{ query: { sort: sort === 'DESC' ? 'ASC' : 'DESC' } }">
       Sort by date
@@ -16,6 +17,7 @@
 </template>
 
 <script setup lang="ts">
+  import Hero from '~/components/Hero.vue'
   const route = useRoute()
   const { data } = await useFetch('/api/conferences')
   const filters = computed(() => ({
