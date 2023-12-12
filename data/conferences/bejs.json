@@ -5,9 +5,7 @@
   "startDate": "2023-05-12",
   "location": "Brussels, Belgium",
   "url": "https://www.bejs.io/conf",
-  "tags": [
-    "JavaScript"
-  ],
+  "tags": ["JavaScript"],
   "speakers": {
     "total": 19,
     "womenAndNonBinary": 8
