@@ -37,10 +37,7 @@
     "status": {
       "description": "The status of the conference",
       "type": "string",
-      "enum": [
-        "cfp open",
-        "cfp closed"
-      ]
+      "enum": ["cfp open", "cfp closed"]
     },
     "tags": {
       "description": "The tags of the conference",
@@ -104,6 +101,22 @@
         "womenAndNonBinaryMain": {
           "description": "The number of women and non-binary speakers on the main track (if there is one)",
           "type": "number"
+        }
+      }
+    },
+    "pastDiversityScore": {
+      "description": "The past diversity score of the conference per year, the score is a number between 0 and 100",
+      "type": "object",
+      "properties": {
+        "year": {
+          "description": "The year when the conference took place",
+          "type": "number"
+        },
+        "score": {
+          "description": "The diversity score of the conference",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
         }
       }
     }
