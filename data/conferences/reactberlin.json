@@ -5,16 +5,14 @@
   "startDate": "2023-12-08",
   "location": "Hybrid",
   "url": "https://reactday.berlin/",
-  "tags": [
-    "JavaScript",
-    "React",
-    "React Native"
-  ],
+  "tags": ["JavaScript", "React", "React Native"],
   "speakers": {
     "total": 56,
     "womenAndNonBinary": 5
   },
   "organizer": {
-    "name": "GitNation"
+    "name": "GitNation",
+    "url": "https://gitnation.org/",
+    "forProfit": true
   }
 }

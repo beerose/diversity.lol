@@ -1,0 +1,18 @@
+{
+  "$schema": "../../public/schema/v1.json",
+  "name": "reactjsday",
+  "description": "reactjsday is proudly organised by GrUSP.",
+  "startDate": "2023-10-27",
+  "location": "Verona, Italy",
+  "url": "https://reactjsday.it/",
+  "tags": ["JavaScript", "React"],
+  "speakers": {
+    "total": 10,
+    "womenAndNonBinary": 3
+  },
+  "organizer": {
+    "name": "GrUSP",
+    "forProfit": false,
+    "url": "https://grusp.org"
+  }
+}

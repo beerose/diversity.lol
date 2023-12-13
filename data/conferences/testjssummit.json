@@ -11,6 +11,8 @@
     "womenAndNonBinary": 10
   },
   "organizer": {
-    "name": "GitNation"
+    "name": "GitNation",
+    "url": "https://gitnation.org/",
+    "forProfit": true
   }
 }
