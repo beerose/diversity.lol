@@ -18,6 +18,7 @@ export const getConferencesFor = async ({
 	filters?: Partial<Filters>;
 	sort?: SortValue;
 }) => {
+	console.log("getConferencesFor", { filters, sort });
 	return data
 		.filter((conference) => {
 			if (!filters.threshold) {
@@ -33,10 +34,10 @@ export const getConferencesFor = async ({
 			return conference.tags.includes(filters.tag);
 		})
 		.filter((conference) => {
-			if (!filters.locations) {
+			if (!filters.location) {
 				return true;
 			}
-			return conference.location === filters.locations;
+			return conference.location === filters.location;
 		})
 		.sort((a, b) => {
 			switch (sort) {

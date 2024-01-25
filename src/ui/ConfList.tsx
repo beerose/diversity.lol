@@ -1,9 +1,10 @@
 import { getConferencesFor } from "@/utils/data";
 import { ConfListItem } from "@/ui/ConfListItem";
 import { FiltersSection } from "@/ui/FiltersSection";
+import { type Filters, type SortValue } from "@/utils/filters";
 
-export const ConfList = async () => {
-	const conferences = await getConferencesFor({});
+export const ConfList = async ({ filters, sort }: { filters?: Partial<Filters>; sort?: SortValue }) => {
+	const conferences = await getConferencesFor({ filters, sort });
 
 	return (
 		<>
