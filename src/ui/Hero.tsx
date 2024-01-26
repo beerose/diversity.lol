@@ -4,8 +4,8 @@ export const Hero = () => {
 	return (
 		<div>
 			<header className="inset-x-0 top-0 z-50">
-				<nav className="flex items-center justify-between py-6 text-xs text-gray-500" aria-label="Global">
-					<Link href="/about" className="-m-1.5 p-1.5 underline-offset-1 hover:text-gray-600 hover:underline">
+				<nav className="flex items-center justify-between py-6 text-xs text-gray-600" aria-label="Global">
+					<Link href="/about" className="-m-1.5 p-1.5 underline-offset-1 hover:text-gray-800 hover:underline">
 						About
 					</Link>
 					<Link
@@ -25,7 +25,7 @@ export const Hero = () => {
 				</nav>
 			</header>
 
-			<div className="relative isolate px-6 lg:px-8">
+			<div className="relative isolate">
 				<div className="mx-auto max-w-2xl py-4 sm:py-6 lg:py-8">
 					<div className="flex flex-col items-center text-center">
 						<Link href="/">
@@ -37,7 +37,7 @@ export const Hero = () => {
 							A list of conferences and events with statistics on diversity and inclusion.
 						</p>
 						<p className="text-base leading-6 text-stone-600">
-							This is a community project. Please, contribute!
+							This is a community project. Please,&nbsp;contribute!
 						</p>
 						<div className="flex items-center gap-x-6 pt-6 lg:mt-0 lg:flex-shrink-0">
 							<Link
