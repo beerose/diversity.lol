@@ -2,6 +2,7 @@ export const sortOptions = [
 	{ label: "Newest", value: "newest" },
 	{ label: "Oldest", value: "oldest" },
 	{ label: "Most Diverse", value: "diverse" },
+	{ label: "Least Diverse", value: "least" },
 ] as const;
 export const sortValues = sortOptions.map((o) => o.value);
 export type SortValue = (typeof sortValues)[number];

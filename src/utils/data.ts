@@ -79,6 +79,8 @@ export const getConferencesFor = async ({
 					return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
 				case "diverse":
 					return calculateDiversity(b) - calculateDiversity(a);
+				case "least":
+					return calculateDiversity(a) - calculateDiversity(b);
 				default:
 					return 0;
 			}
