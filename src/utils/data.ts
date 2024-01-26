@@ -60,9 +60,15 @@ export const getConferencesFor = async ({
 			return conference.tags.some((tag) => filters.tags?.includes(tag));
 		})
 		.filter((conference) => {
-			if (!filters.location) {
+			if (!filters.location?.length) {
 				return true;
 			}
+			if (filters.location.includes("inperson")) {
+				return (
+					conference.location.toLowerCase() !== "online" && conference.location.toLowerCase() !== "hybrid"
+				);
+			}
+
 			return filters.location.includes(conference.location);
 		})
 		.sort((a, b) => {
