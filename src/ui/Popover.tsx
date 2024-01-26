@@ -24,7 +24,7 @@ export const Popover = ({
 			}
 			const rect = button.getBoundingClientRect();
 			popover.style.setProperty("--popover-top", `${rect.top + rect.height + window.scrollY + 4}px`);
-			popover.style.setProperty("--popover-left", `${rect.left + window.screenX}px`);
+			popover.style.setProperty("--popover-left", `${rect.left + window.scrollX}px`);
 		};
 
 		resize();
