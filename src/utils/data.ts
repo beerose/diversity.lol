@@ -63,7 +63,7 @@ export const getConferencesFor = async ({
 			if (!filters.location) {
 				return true;
 			}
-			return conference.location === filters.location;
+			return filters.location.includes(conference.location);
 		})
 		.sort((a, b) => {
 			switch (sort) {
