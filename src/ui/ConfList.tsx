@@ -1,22 +1,23 @@
-import { getConferencesFor } from "@/utils/data";
 import { ConfListItem } from "@/ui/ConfListItem";
 import { FiltersSection } from "@/ui/FiltersSection";
-import { type Filters, type SortValue } from "@/utils/filters";
+import { type Conference } from "@/data/types/v1";
 
-export const ConfList = async ({ filters, sort }: { filters?: Partial<Filters>; sort?: SortValue }) => {
-	const conferences = await getConferencesFor({ filters, sort });
-
+export const ConfList = async ({
+	conferences,
+	tags,
+}: {
+	conferences: readonly Conference[];
+	tags: readonly string[];
+}) => {
 	return (
-		<>
-			<div className="space-y-4">
-				<FiltersSection />
+		<div className="space-y-4">
+			<FiltersSection tags={tags} />
 
-				<ul role="list" className="space-y-4 overflow-hidden bg-white">
-					{conferences.map((conference) => {
-						return <ConfListItem key={conference.url} conference={conference} />;
-					})}
-				</ul>
-			</div>
-		</>
+			<ul role="list" className="space-y-4 overflow-hidden bg-white">
+				{conferences.map((conference) => {
+					return <ConfListItem key={conference.url} conference={conference} />;
+				})}
+			</ul>
+		</div>
 	);
 };

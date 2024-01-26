@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { type Conference } from "@/utils/data";
+import { type Conference } from "@/data/types/v1";
 
 export const ConfListItem = ({ conference }: { conference: Conference }) => {
 	return (

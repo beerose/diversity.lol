@@ -23,15 +23,20 @@ export const SearchParamsSelect = <TValue extends string>({
 	return (
 		<Select
 			name={name}
+			aria-label={caption}
 			onChange={(e) => {
-				const newSort = e.currentTarget.value as TValue;
+				const newValue = e.currentTarget.value as TValue;
 				const newParams = new URLSearchParams(searchParams);
-				newParams.set(name, newSort);
+				if (newValue) {
+					newParams.set(name, newValue);
+				} else {
+					newParams.delete(name);
+				}
 				void router.push(`?${newParams.toString()}`);
 			}}
 			value={value ?? ""}
 		>
-			<option hidden>{caption}</option>
+			<option value="">{caption}</option>
 			{options.map((option) => {
 				return (
 					<option key={option.value} value={option.value}>

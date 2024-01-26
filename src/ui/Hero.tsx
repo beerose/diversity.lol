@@ -28,9 +28,11 @@ export const Hero = () => {
 			<div className="relative isolate px-6 pt-10 lg:px-8">
 				<div className="mx-auto max-w-2xl py-6 sm:py-8 lg:py-12">
 					<div className="flex flex-col items-center text-center">
-						<h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-							🫠 diversity.lol 🫠
-						</h1>
+						<Link href="/">
+							<h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+								🫠 diversity.lol 🫠
+							</h1>
+						</Link>
 						<p className="mt-6 text-base leading-6 text-stone-600">
 							A list of conferences and events with statistics on diversity and inclusion.
 						</p>

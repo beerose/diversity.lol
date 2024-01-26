@@ -1,14 +1,39 @@
-import { type Filters, type SortValue } from "@/utils/filters";
+import "server-only";
 
-const data = [] as Conference[];
+import * as Path from "node:path";
+import fg from "fast-glob";
+import { type Conference } from "@/data/types/v1";
+import { type Filters, type SortValue } from "@/utils/filters";
 
 const calculateDiversity = (conference: Conference) => {
 	const diversity =
-		((conference.speakers.womenAndNonBinaryMain || conference.speakers.womenAndNonBinary) /
+		((conference.speakers.womenAndNonBinaryMain ?? conference.speakers.womenAndNonBinary) /
 			conference.speakers.total) *
 		100;
 
 	return diversity;
+};
+
+export const getAllConferences = async () => {
+	const cwd = Path.join(process.cwd(), "src/data/conferences");
+	const files = await fg(["*.json"], { cwd });
+
+	const conferences = await Promise.all(
+		files
+			.filter((f) => !f.startsWith("_") && !f.startsWith("."))
+			.map(async (filename) => {
+				const conference = (await import(`@/data/conferences/${filename}`)) as Conference;
+				return conference;
+			}),
+	);
+	return conferences;
+};
+
+export const getAllTags = async () => {
+	const conferences = await getAllConferences();
+
+	const tags = conferences.flatMap((conference) => conference.tags);
+	return [...new Set(tags)];
 };
 
 export const getConferencesFor = async ({
@@ -19,6 +44,8 @@ export const getConferencesFor = async ({
 	sort?: SortValue;
 }) => {
 	console.log("getConferencesFor", { filters, sort });
+	const data = await getAllConferences();
+
 	return data
 		.filter((conference) => {
 			if (!filters.threshold) {
@@ -28,10 +55,10 @@ export const getConferencesFor = async ({
 			return diversity >= Number(filters.threshold);
 		})
 		.filter((conference) => {
-			if (!filters.tag) {
+			if (!filters.tags?.length) {
 				return true;
 			}
-			return conference.tags.includes(filters.tag);
+			return conference.tags.some((tag) => filters.tags?.includes(tag));
 		})
 		.filter((conference) => {
 			if (!filters.location) {
@@ -52,32 +79,3 @@ export const getConferencesFor = async ({
 			}
 		});
 };
-
-export interface Conference {
-	name: string;
-	description: string;
-	startDate: string;
-	cfp: {
-		open: string;
-		close: string;
-		url: string;
-	};
-	status: "cfp open" | "cfp closed";
-	tags: string[];
-	location: string;
-	url: string;
-	social: {
-		twitter: string;
-	};
-	organizer: {
-		name: string;
-		url: string;
-		forProfit: boolean;
-	};
-	size: string;
-	speakers: {
-		total: number;
-		womenAndNonBinary: number;
-		womenAndNonBinaryMain: number;
-	};
-}

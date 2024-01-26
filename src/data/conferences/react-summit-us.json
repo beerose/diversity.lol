@@ -1,0 +1,18 @@
+{
+	"$schema": "../../../public/schema/v1.json",
+	"name": "React Summit US",
+	"description": "The biggest React conference – React Summit – comes to the USA.",
+	"startDate": "2023-11-13",
+	"location": "New York, USA",
+	"url": "https://reactsummit.us/",
+	"tags": ["JavaScript", "React", "React Native"],
+	"speakers": {
+		"total": 52,
+		"womenAndNonBinary": 14
+	},
+	"organizer": {
+		"name": "GitNation",
+		"url": "https://gitnation.org/",
+		"forProfit": true
+	}
+}

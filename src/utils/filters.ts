@@ -6,12 +6,6 @@ export const sortOptions = [
 export const sortValues = sortOptions.map((o) => o.value);
 export type SortValue = (typeof sortValues)[number];
 
-export const tagOptions = {
-	id: "tag",
-	caption: "Tag",
-	options: [] as { value: string; label: string }[],
-} as const;
-export const tagValues = tagOptions.options.map((o) => o.value);
 export const locationOptions = {
 	id: "location",
 	caption: "Location",
@@ -39,9 +33,11 @@ export const thresholdOptions = {
 } as const;
 export const thresholdValues = thresholdOptions.options.map((o) => o.value);
 
-export const filterOptions = [tagOptions, locationOptions, thresholdOptions] as const;
+export const filterOptions = [locationOptions, thresholdOptions] as const;
 
 export type FilterKey = (typeof filterOptions)[number]["id"];
 export type Filters = {
 	[K in FilterKey]: Extract<(typeof filterOptions)[number], { id: K }>["options"][number]["value"];
+} & {
+	tags?: readonly string[];
 };
