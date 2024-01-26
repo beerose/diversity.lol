@@ -1,0 +1,42 @@
+name: Tests
+on:
+  pull_request:
+  merge_group:
+    branches:
+      - main
+
+concurrency:
+  group: tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get PNPM version from package.json
+        id: pnpm-version
+        run: echo "pnpm_version=$(cat package.json | jq '.engines.pnpm' | sed -E 's/[^0-9.]//g')" >> $GITHUB_OUTPUT
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ steps.pnpm-version.outputs.pnpm_version }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm --version && pnpm install --frozen-lockfile
+
+      - name: JSON Schema
+        run: pnpm ajv --errors=json -s public/schema/v1.json -d "src/data/conferences/*.json"
+
+      - name: Prettier
+        run: pnpm prettier --cache --check .
+
+      - name: ESLint
+        run: pnpm next lint

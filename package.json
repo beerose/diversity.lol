@@ -28,6 +28,7 @@
 		"@types/react-dom": "18.2.18",
 		"@typescript-eslint/eslint-plugin": "6.19.1",
 		"@typescript-eslint/parser": "6.19.1",
+		"ajv-cli": "5.0.0",
 		"autoprefixer": "10.4.17",
 		"eslint": "8.56.0",
 		"eslint-config-next": "14.1.0",
@@ -41,5 +42,10 @@
 		"prettier-plugin-tailwindcss": "0.5.11",
 		"tailwindcss": "3.4.1",
 		"typescript": "5.4.0-dev.20240125"
-	}
+	},
+	"engines": {
+		"node": "^20.0.0",
+		"pnpm": "^8.14.2"
+	},
+	"packageManager": "pnpm@8.14.2"
 }
