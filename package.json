@@ -1,25 +1,51 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "devDependencies": {
-    "@headlessui/vue": "^1.7.16",
-    "@heroicons/vue": "^2.0.18",
-    "@nuxt/devtools": "latest",
-    "@tailwindcss/forms": "^0.5.7",
-    "autoprefixer": "^10.4.16",
-    "nuxt": "^3.8.2",
-    "postcss": "^8.4.32",
-    "tailwindcss": "^3.3.6",
-    "vue": "^3.3.10",
-    "vue-router": "^4.2.5"
-  },
-  "packageManager": "pnpm@8.10.2"
+	"name": "diversity.lol",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"postinstall": "pnpm json2ts -i 'public/schema' -o src/data/types",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"@headlessui/react": "1.7.18",
+		"@heroicons/react": "2.1.1",
+		"clsx": "2.1.0",
+		"fast-glob": "3.3.2",
+		"next": "14.1.0",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"server-only": "0.0.1"
+	},
+	"devDependencies": {
+		"@tailwindcss/forms": "0.5.7",
+		"@types/node": "20.11.6",
+		"@types/react": "18.2.48",
+		"@types/react-dom": "18.2.18",
+		"@typescript-eslint/eslint-plugin": "6.19.1",
+		"@typescript-eslint/parser": "6.19.1",
+		"ajv-cli": "5.0.0",
+		"autoprefixer": "10.4.17",
+		"eslint": "8.56.0",
+		"eslint-config-next": "14.1.0",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-plugin-import": "2.29.1",
+		"husky": "9.0.6",
+		"json-schema-to-typescript": "13.1.2",
+		"lint-staged": "15.2.0",
+		"postcss": "8.4.33",
+		"prettier": "3.2.4",
+		"prettier-plugin-tailwindcss": "0.5.11",
+		"tailwindcss": "3.4.1",
+		"typescript": "5.4.0-dev.20240125"
+	},
+	"engines": {
+		"node": "^20.0.0",
+		"pnpm": "^8.14.2"
+	},
+	"packageManager": "pnpm@8.14.2"
 }
