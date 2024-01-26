@@ -40,7 +40,7 @@ export const Popover = ({ caption, children }: { caption: string; children: Reac
 				popovertarget={id}
 				ref={buttonRef}
 				type="button"
-				className="chevron appearance-none rounded-md border border-black bg-white px-3 py-2 text-sm font-semibold shadow-sm outline-none focus:border-black focus:ring-2 focus:ring-accentDark focus:ring-offset-2"
+				className="chevron appearance-none rounded-md border border-black bg-white px-3 py-1 text-xs font-semibold shadow-sm outline-none focus:border-black focus:ring-2 focus:ring-accentDark focus:ring-offset-2"
 			>
 				{caption}
 			</button>

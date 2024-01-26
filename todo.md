@@ -11,3 +11,6 @@
   - tresholds (% of women speakers)
 
 - highlights
+
+- display filters
+- allow delete all filters
