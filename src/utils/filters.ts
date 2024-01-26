@@ -15,6 +15,7 @@ export const locationOptions = {
 		{ value: "hybrid", label: "Hybrid" },
 	],
 } as const;
+export type Location = (typeof locationOptions)["options"][number]["value"];
 export const locationValues = locationOptions.options.map((o) => o.value);
 export const thresholdOptions = {
 	id: "threshold",
@@ -33,7 +34,7 @@ export const thresholdOptions = {
 } as const;
 export const thresholdValues = thresholdOptions.options.map((o) => o.value);
 
-export const filterOptions = [locationOptions, thresholdOptions] as const;
+export const filterOptions = [thresholdOptions] as const;
 
 export type FilterKey = (typeof filterOptions)[number]["id"];
 export type Filters = {
