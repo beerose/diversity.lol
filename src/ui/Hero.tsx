@@ -37,11 +37,11 @@ export const Hero = () => {
 							A list of conferences and events with statistics on diversity and inclusion.
 						</p>
 						<p className="text-base leading-6 text-stone-600">
-							This is a community project. Please contribute!
+							This is a community project. Please, contribute!
 						</p>
 						<div className="flex items-center gap-x-6 pt-6 lg:mt-0 lg:flex-shrink-0">
 							<Link
-								href="https://github.com/beerose/diversity.lol/new/main/data/conferences"
+								href="https://github.com/beerose/diversity.lol/new/main/src/data/conferences"
 								target="_blank"
 								className="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accentDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accentDark"
 							>

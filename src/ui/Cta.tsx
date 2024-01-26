@@ -7,7 +7,7 @@ export const Cta = () => {
 				<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Want to contribute?</h2>
 				<div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
 					<Link
-						href="https://github.com/beerose/diversity.lol/new/main/data/conferences"
+						href="https://github.com/beerose/diversity.lol/new/main/src/data/conferences"
 						target="_blank"
 						className="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accentDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accentDark"
 					>
