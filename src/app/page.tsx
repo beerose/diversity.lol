@@ -3,7 +3,7 @@ import { Cta } from "@/ui/Cta";
 import { Footer } from "@/ui/Footer";
 import { Hero } from "@/ui/Hero";
 import { getAllTags, getConferencesFor } from "@/utils/data";
-import { locationValues, sortValues, thresholdValues } from "@/utils/filters";
+import { sortValues, thresholdValues } from "@/utils/filters";
 
 export default async function Home({
 	searchParams,
@@ -11,7 +11,7 @@ export default async function Home({
 	searchParams: Record<string, string | string[] | undefined>;
 }) {
 	const sort = sortValues.includes(searchParams.sort) ? searchParams.sort : undefined;
-	const location = locationValues?.includes(searchParams.location) ? searchParams.location : undefined;
+	const location = [searchParams.location].flat().filter(Boolean);
 	const threshold = thresholdValues?.includes(searchParams.threshold) ? searchParams.threshold : undefined;
 	const searchTags = [searchParams.tags].flat().filter(Boolean);
 

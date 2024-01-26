@@ -41,4 +41,5 @@ export type Filters = {
 	[K in FilterKey]: Extract<(typeof filterOptions)[number], { id: K }>["options"][number]["value"];
 } & {
 	tags?: readonly string[];
+	location?: readonly string[];
 };
