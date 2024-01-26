@@ -13,9 +13,9 @@ export const ConfListItem = ({ conference }: { conference: Conference }) => {
 					})}
 				</time>
 			</div>
-			<div className="flex w-full justify-between">
-				<div className="flex-col space-y-1 py-4">
-					<ul className="flex space-x-2">
+			<div className="grid w-full grid-cols-2 sm:grid-cols-3">
+				<div className="col-span-1 flex-col space-y-1 py-4 sm:col-span-2">
+					<ul className="flex flex-wrap gap-x-2">
 						{conference.tags.map((tag) => {
 							return (
 								<li key={tag}>
@@ -38,11 +38,11 @@ export const ConfListItem = ({ conference }: { conference: Conference }) => {
 						<p className="text-xs text-gray-900">{conference.location}</p>
 					</div>
 				</div>
-				<div>
-					<dl className="grid h-full grid-cols-1 divide-y divide-slate-100 overflow-hidden py-5 md:grid-cols-2 md:divide-x md:divide-y-0">
+				<div className="col-span-1">
+					<dl className="grid h-full grid-cols-1 space-y-4 divide-slate-100 overflow-hidden py-5 md:grid-cols-2 md:space-y-0 md:divide-x md:divide-y-0">
 						<div className="px-4">
 							<dt className="text-xs font-normal text-gray-900">Total Speakers</dt>
-							<dd className="mt-2 flex items-baseline justify-between md:block lg:flex">
+							<dd className="flex items-baseline justify-between sm:mt-2 md:block lg:flex">
 								<div className="flex items-baseline text-2xl font-semibold text-accent">
 									{conference.speakers.total}
 								</div>
@@ -50,7 +50,7 @@ export const ConfListItem = ({ conference }: { conference: Conference }) => {
 						</div>
 						<div className="px-4">
 							<dt className="text-xs font-normal text-gray-900">Women & Non-Binary</dt>
-							<dd className="mt-2 flex items-baseline justify-between md:block lg:flex">
+							<dd className="flex items-baseline justify-between sm:mt-2 md:block lg:flex">
 								<div className="flex items-baseline text-2xl font-semibold text-accent">
 									{Math.round((conference.speakers.womenAndNonBinary / conference.speakers.total) * 100)}%
 								</div>
