@@ -25,8 +25,8 @@ export const Hero = () => {
 				</nav>
 			</header>
 
-			<div className="relative isolate px-6 pt-10 lg:px-8">
-				<div className="mx-auto max-w-2xl py-6 sm:py-8 lg:py-12">
+			<div className="relative isolate px-6 lg:px-8">
+				<div className="mx-auto max-w-2xl py-4 sm:py-6 lg:py-8">
 					<div className="flex flex-col items-center text-center">
 						<Link href="/">
 							<h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
