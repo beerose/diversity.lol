@@ -10,7 +10,7 @@ export const TagsPopover = ({ tags }: { tags: readonly string[] }) => {
 	const searchTags = searchParams.getAll("tags")?.filter((tag) => tags.includes(tag)) ?? [];
 
 	return (
-		<Popover caption="Tags">
+		<Popover caption="Tags" count={searchTags.length}>
 			{tags.map((tag) => {
 				return (
 					<div key={tag} className="mb-1 grid">

@@ -2,7 +2,15 @@
 
 import { type ReactNode, useId, useRef, useEffect } from "react";
 
-export const Popover = ({ caption, children }: { caption: string; children: ReactNode }) => {
+export const Popover = ({
+	caption,
+	children,
+	count,
+}: {
+	caption: string;
+	count: number;
+	children: ReactNode;
+}) => {
 	const id = "popover-" + useId();
 	const popoverRef = useRef<HTMLDivElement | null>(null);
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -32,7 +40,7 @@ export const Popover = ({ caption, children }: { caption: string; children: Reac
 				popover="auto"
 				ref={popoverRef}
 				id={id}
-				className="absolute bottom-auto left-[var(--popover-left)] right-auto top-[var(--popover-top)] rounded-md bg-white px-4 py-4 shadow-md"
+				className="absolute bottom-auto left-[var(--popover-left)] right-auto top-[var(--popover-top)] space-y-1.5 rounded-md bg-white px-4 py-4 text-xs shadow-md"
 			>
 				{children}
 			</div>
@@ -43,6 +51,11 @@ export const Popover = ({ caption, children }: { caption: string; children: Reac
 				className="chevron appearance-none rounded-md border border-black bg-white px-3 py-1 text-xs font-semibold shadow-sm outline-none focus:border-black focus:ring-2 focus:ring-accentDark focus:ring-offset-2"
 			>
 				{caption}
+				{count > 0 && (
+					<span className="ml-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
+						{count}
+					</span>
+				)}
 			</button>
 		</>
 	);
