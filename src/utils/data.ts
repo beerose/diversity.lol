@@ -43,7 +43,6 @@ export const getConferencesFor = async ({
 	filters?: Partial<Filters>;
 	sort?: SortValue;
 }) => {
-	console.log("getConferencesFor", { filters, sort });
 	const data = await getAllConferences();
 
 	return data
