@@ -5,7 +5,7 @@ import { sortOptions, filterOptions } from "@/utils/filters";
 
 export const FiltersSection = ({ tags }: { tags: readonly string[] }) => {
 	return (
-		<section>
+		<section className="hidden sm:block">
 			<h2 className="sr-only">Filters</h2>
 
 			<div className="bg-white pb-4">
