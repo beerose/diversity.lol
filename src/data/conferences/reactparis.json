@@ -1,0 +1,16 @@
+{
+	"$schema": "../../../public/schema/v1.json",
+	"name": "React Paris 2024",
+	"description": "A family-like, community-run JavaScript Conference!",
+	"startDate": "2024-03-22",
+	"location": "Paris, France",
+	"url": "https://react.paris/",
+	"tags": ["JavaScript", "React"],
+	"speakers": {
+		"total": 13,
+		"womenAndNonBinary": 6
+	},
+	"organizer": {
+		"name": "BeJS"
+	}
+}

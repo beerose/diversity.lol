@@ -1,0 +1,16 @@
+{
+	"$schema": "../../../public/schema/v1.json",
+	"name": "React Brussels 2023",
+	"description": "A family-like, community-run JavaScript Conference!",
+	"startDate": "2023-05-12",
+	"location": "Brussels, Belgium",
+	"url": "https://www.react.brussels/",
+	"tags": ["JavaScript"],
+	"speakers": {
+		"total": 16,
+		"womenAndNonBinary": 7
+	},
+	"organizer": {
+		"name": "BeJS"
+	}
+}
